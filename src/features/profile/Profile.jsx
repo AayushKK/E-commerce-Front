@@ -10,7 +10,7 @@ const Profile = () => {
 
 
   return (
-    <div className='p-4 grid grid-cols-3 gap-10'>
+    <div className="grid grid-cols-3 mlg:grid-cols-3 msm:grid-cols-1 p-5 gap-5">
 
 
       <ProfileForm user={user} />

@@ -11,7 +11,7 @@ import {
   Typography,
   ListItemSuffix,
 } from "@material-tailwind/react";
-import { base } from '../../app/apiUrls';
+
 
 const OrderDetail = () => {
   const { id } = useParams();
@@ -30,7 +30,7 @@ const OrderDetail = () => {
       <Card className="w-96 mt-4">
         <List>
 
-          {data.products.map((product) => {
+          {data?.products?.map((product) => {
             const { _id, title, image, price, description } = product.productId;
             return <ListItem key={product._id}>
               <ListItemPrefix>

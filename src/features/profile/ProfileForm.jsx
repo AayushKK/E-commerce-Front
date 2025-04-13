@@ -20,13 +20,11 @@ const ProfileForm = ({ user }) => {
 
   return (
     <div>
-      <div className='mb-2'>
-        <Typography variant="h4" color="blue-gray">
+
+      <div className='max-w-[400px] p-4 mx-auto mt-4'>
+        <Typography variant="h4" color="blue-gray" className='mb-7'>
           Welcome, {data.username}
         </Typography>
-
-      </div>
-      <div className='max-w-[400px] p-4 mx-auto mt-4'>
         <Formik
           initialValues={{
             email: data.email,

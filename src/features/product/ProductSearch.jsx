@@ -11,7 +11,7 @@ const ProductSearch = ({ onSearch }) => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mb-8">
+    <div className="w-full msm:w-72 mmd:w-80 mlg:w-96 mx-auto">
       <Input
         type="search"
         label="Search products..."

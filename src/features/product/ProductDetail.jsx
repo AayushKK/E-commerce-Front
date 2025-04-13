@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useGetProductQuery } from './productApi';
 import { base } from '../../app/apiUrls';
-import { Button, Card, IconButton, Typography } from "@material-tailwind/react";
+import { Button, Card, CardBody, IconButton, Typography } from "@material-tailwind/react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setCart } from '../cart/cartSlice';
 const ProductDetail = () => {
@@ -17,16 +17,62 @@ const ProductDetail = () => {
 
 
   return (
-    <div className='grid grid-cols-3 p-5 gap-5'>
-      <div>
-        <img src={`${data.image}`} alt="" />
+    <div className="grid grid-cols-3 mlg:grid-cols-3 msm:grid-cols-1 p-5 gap-5">
+      {/* Image Section */}
+      <Card className="mlg:col-span-1 h-full">
+        <CardBody className="p-4 flex justify-center">
+          <img
+            src={data.image}
+            alt={data.title}
+            className="max-h-96 w-full object-contain"
+          />
+        </CardBody>
+      </Card>
+
+      {/* Product Info Section */}
+      <div className="mlg:col-span-1 space-y-4">
+        <Typography variant="h2" className="font-bold">
+          {data.title}
+        </Typography>
+
+        <Typography variant="paragraph" className="text-gray-700">
+          {data.description}
+        </Typography>
+
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Typography variant="small" color="blue-gray">
+              Price:
+            </Typography>
+            <Typography variant="small" className="capitalize">
+              {"$" + data.price}
+            </Typography>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Typography variant="small" color="blue-gray">
+              Category:
+            </Typography>
+            <Typography variant="small" className="capitalize">
+              {data.category}
+            </Typography>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Typography variant="small" color="blue-gray">
+              Stock:
+            </Typography>
+            <Typography variant="small">
+              {data.stock > 0 ? (
+                <span className="text-green-500">{data.stock} available</span>
+              ) : (
+                <span className="text-red-500">Out of stock</span>
+              )}
+            </Typography>
+          </div>
+        </div>
       </div>
 
-      <div className='space-y-4'>
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
-        <p>${data.price}</p>
-      </div>
 
       <div>
         <CartTable product={data} />
@@ -64,6 +110,7 @@ export function CartTable({ product }) {
 
         <p className='mx-4 font-bold'>{qty}</p>
         <IconButton
+          disabled={qty === product.stock}
           onClick={() => setQty(qty + 1)}
           size='sm'><i className="fas fa-add" /></IconButton>
       </div>
