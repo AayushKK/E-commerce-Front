@@ -11,18 +11,17 @@ const ProductPage = () => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   return (
-    <div>
-          <div className="flex flex-col msm:flex-row justify-between items-center gap-4 p-5">
-            <div className="w-full msm:w-1/2">
-                    <ProductSearch onSearch={setSearchTerm} />
-            </div>
-            <div className="w-full msm:w-1/2">
-                    <ProductFilter onFilter={setFilter} />
-            </div>
-          </div>
-      <ProductList searchTerm={debouncedSearchTerm} filters={filter} />
-
+<div>
+  <div className="flex flex-col msm:flex-row justify-between items-center gap-4 p-5">
+    <div className="w-full msm:flex-1">
+      <ProductSearch onSearch={setSearchTerm} />
     </div>
+    <div className="w-full msm:flex-1">
+      <ProductFilter onFilter={setFilter} />
+    </div>
+  </div>
+  <ProductList searchTerm={debouncedSearchTerm} filters={filter} />
+</div>
 
   );
 };
