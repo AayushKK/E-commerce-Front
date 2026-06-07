@@ -12,17 +12,14 @@ const ProductPage = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center p-5">
-
-        <div className="w-full msm:w-1/2 pr-2">
-          <ProductSearch onSearch={setSearchTerm} />
-        </div>
-
-
-        <div className="w-full  msm:w-1/2 pl-2">
-          <ProductFilter onFilter={setFilter} />
-        </div>
-      </div>
+     <div className="flex flex-col msm:flex-row justify-between items-center gap-4 p-5">
+  <div className="w-full msm:w-1/2">
+    <ProductSearch onSearch={setSearchTerm} />
+  </div>
+  <div className="w-full msm:w-1/2">
+    <ProductFilter onFilter={setFilter} />
+  </div>
+</div>
       <ProductList searchTerm={debouncedSearchTerm} filters={filter} />
 
     </div>
