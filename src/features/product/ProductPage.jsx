@@ -12,12 +12,15 @@ const ProductPage = () => {
 
   return (
 <div>
-  <div className="flex flex-col msm:flex-row justify-between items-center gap-4 p-5">
-    <div className="w-full msm:flex-1">
+  <div className="flex flex-col gap-4 p-5">
+    <div className="w-full">
       <ProductSearch onSearch={setSearchTerm} />
     </div>
-    <div className="w-full msm:flex-1">
-      <ProductFilter onFilter={setFilter} />
+    <div className="w-full msm:flex msm:flex-row msm:gap-4">
+      {/* This will show filter normally on mobile, but wrap it in a flex on desktop */}
+      <div className="w-full">
+        <ProductFilter onFilter={setFilter} />
+      </div>
     </div>
   </div>
   <ProductList searchTerm={debouncedSearchTerm} filters={filter} />
